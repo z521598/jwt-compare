@@ -24,7 +24,7 @@ public class JwtsUtils {
         claims.setIssuedAt(new Date());
         claims.setExpiration(DateUtils.addDays(new Date(), 1));
         String jws = Jwts.builder().setClaims(claims).signWith(privateKey, signatureAlgorithm).compact();
-
+        System.out.println(jws);
         // 公钥验签
         PublicKey publicKey = keyPair.getPublic();
         Jwt jwt = Jwts.parser().setSigningKey(publicKey).parse(jws);
